@@ -9,5 +9,5 @@ function solution(participant, completion) {
     }
 }
 
-// sort() : 알파벳 순서대로 배열 정렬
+// sort() : 문자열 배열의 경우 문자열을 사전 순으로 정렬
 // 비교연산자 !== 사용
