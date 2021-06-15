@@ -13,10 +13,10 @@ function solution(str, n) {
 }
 
 /*
-fromCharCode(): 아스키 코드 -> 문자열
-charCodeAt(): 문자열 -> 아스키 코드
+fromCharCode(): 유니코드 -> 문자열
+charCodeAt(): 문자열 -> 유니코드
 
-아스키 코드로 변환했을 때 90보다 크면 소문자
+유니코드로 변환했을 때 90보다 크면 소문자
 65 ~ 90 : A ~ Z
 97 ~ 121 : a ~ z
 */
