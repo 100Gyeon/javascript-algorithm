@@ -33,7 +33,7 @@ function solution(N, road, K) {
     });
   }
 
-  // 1번 마을에 있는 음식점이 K 이하의 시간에 배달이 가능한 마을의 개수를 return
+  // 1번 마을 음식점이 K시간 안에 배달할 수 있는 마을의 개수를 return
   answer = timeArr.filter((time) => time <= K).length;
   return answer;
 }
