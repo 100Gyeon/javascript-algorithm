@@ -2,7 +2,9 @@ function solution(N, road, K) {
   let answer = 0;
 
   // 마을 이동할 때 걸리는 최단 시간을 저장할 배열
+  // 첫 정점과의 거리는 0, 나머지는 무한대로 저장
   const timeArr = Array(N + 1).fill(Infinity);
+  timeArr[1] = 0;
 
   // 인접한 마을 간의 정보가 들어있는 배열
   const adjacent = Array.from(Array(N + 1), () => []);
@@ -14,7 +16,6 @@ function solution(N, road, K) {
 
   // 1번 마을부터 우선순위 큐에 저장
   let priorityQueue = [{ to: 1, time: 0 }];
-  timeArr[1] = 0;
 
   // 우선순위 큐에서 꺼낼 노드가 없을 때까지 반복
   while (priorityQueue.length) {
