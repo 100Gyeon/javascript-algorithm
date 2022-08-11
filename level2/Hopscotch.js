@@ -25,7 +25,7 @@ function solution(land) {
   let maxIndex = land[0].indexOf(Math.max(...land[0]));
   answer += land[0][maxIndex];
   for (let i = 1; i < land.length; i++) {
-    land[i].splice(maxIndex, 1);
+    land[i][maxIndex] = 0;
     maxIndex = land[i].indexOf(Math.max(...land[i]));
     answer += land[i][maxIndex];
   }
