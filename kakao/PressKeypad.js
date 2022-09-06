@@ -20,10 +20,10 @@ function solution(numbers, hand) {
   const getLength = (key1, key2) => Math.abs(key1[0] - key2[0]) + Math.abs(key1[1] - key2[1]);
 
   numbers.forEach((number) => {
-    if (number === 1 || number === 4 || number === 7) {
+    if (number % 3 === 1) {
       prevLeft = keypad[number];
       answer += 'L';
-    } else if (number === 3 || number === 6 || number === 9) {
+    } else if (number % 3 === 0 && number !== 0) {
       prevRight = keypad[number];
       answer += 'R';
     } else {
@@ -37,11 +37,11 @@ function solution(numbers, hand) {
         answer += 'R';
       } else {
         if (hand === 'L') {
-          answer += 'L';
           prevLeft = keypad[number];
+          answer += 'L';
         } else {
-          answer += 'R';
           prevRight = keypad[number];
+          answer += 'R';
         }
       }
     }
