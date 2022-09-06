@@ -27,8 +27,8 @@ function solution(numbers, hand) {
       prevRight = keypad[number];
       answer += 'R';
     } else {
-      let leftLength = getLength(prevLeft, keypad[number]);
-      let rightLength = getLength(prevRight, keypad[number]);
+      const leftLength = getLength(prevLeft, keypad[number]);
+      const rightLength = getLength(prevRight, keypad[number]);
       if (leftLength < rightLength) {
         prevLeft = keypad[number];
         answer += 'L';
