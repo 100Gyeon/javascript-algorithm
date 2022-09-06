@@ -17,30 +17,31 @@ function solution(numbers, hand) {
   };
   let prevLeft = keypad['*'];
   let prevRight = keypad['#'];
-  const getLength = (key1, key2) => Math.abs(key1[0] - key2[0]) + Math.abs(key1[1] - key2[1]);
+  const getLength = (prev, curr) => Math.abs(prev[0] - curr[0]) + Math.abs(prev[1] - curr[1]);
 
   numbers.forEach((number) => {
+    const current = keypad[number];
     if (number % 3 === 1) {
-      prevLeft = keypad[number];
+      prevLeft = current;
       answer += 'L';
     } else if (number % 3 === 0 && number !== 0) {
-      prevRight = keypad[number];
+      prevRight = current;
       answer += 'R';
     } else {
-      const leftLength = getLength(prevLeft, keypad[number]);
-      const rightLength = getLength(prevRight, keypad[number]);
+      const leftLength = getLength(prevLeft, current);
+      const rightLength = getLength(prevRight, current);
       if (leftLength < rightLength) {
-        prevLeft = keypad[number];
+        prevLeft = current;
         answer += 'L';
       } else if (leftLength > rightLength) {
-        prevRight = keypad[number];
+        prevRight = current;
         answer += 'R';
       } else {
         if (hand === 'L') {
-          prevLeft = keypad[number];
+          prevLeft = current;
           answer += 'L';
         } else {
-          prevRight = keypad[number];
+          prevRight = current;
           answer += 'R';
         }
       }
