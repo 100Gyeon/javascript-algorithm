@@ -24,7 +24,7 @@ function solution(numbers, hand) {
     if (number % 3 === 1) {
       prevLeft = current;
       answer += 'L';
-    } else if (number % 3 === 0 && number !== 0) {
+    } else if (number % 3 === 0 && number) {
       prevRight = current;
       answer += 'R';
     } else {
