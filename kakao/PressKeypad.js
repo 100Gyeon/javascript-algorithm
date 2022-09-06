@@ -17,7 +17,7 @@ function solution(numbers, hand) {
   };
   let prevLeft = keypad['*'];
   let prevRight = keypad['#'];
-  const getLength = (prev, curr) => Math.abs(prev[0] - curr[0]) + Math.abs(prev[1] - curr[1]);
+  const getDistance = (prev, curr) => Math.abs(prev[0] - curr[0]) + Math.abs(prev[1] - curr[1]);
 
   numbers.forEach((number) => {
     const current = keypad[number];
@@ -28,22 +28,17 @@ function solution(numbers, hand) {
       prevRight = current;
       answer += 'R';
     } else {
-      const leftLength = getLength(prevLeft, current);
-      const rightLength = getLength(prevRight, current);
-      if (leftLength < rightLength) {
+      const leftDistance = getDistance(prevLeft, current);
+      const rightDistance = getDistance(prevRight, current);
+      if (leftDistance < rightDistance) {
         prevLeft = current;
         answer += 'L';
-      } else if (leftLength > rightLength) {
+      } else if (leftDistance > rightDistance) {
         prevRight = current;
         answer += 'R';
       } else {
-        if (hand === 'L') {
-          prevLeft = current;
-          answer += 'L';
-        } else {
-          prevRight = current;
-          answer += 'R';
-        }
+        hand === 'L' ? (prevLeft = current) : (prevRight = current);
+        answer += hand;
       }
     }
   });
