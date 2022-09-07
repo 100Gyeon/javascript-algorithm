@@ -1,21 +1,11 @@
 function solution(N, stages) {
-  let answer = [];
-  let length = stages.length;
-
-  stages.sort((a, b) => a - b);
-  const countMap = stages.reduce((acc, cur) => {
-    acc.set(cur, (acc.get(cur) || 0) + 1);
-    return acc;
-  }, new Map());
-
-  for (let [key, value] of countMap.entries()) {
-    if (key <= N) {
-      if (value === length) {
-        const temp = Array.from({ length: key - 1 }, (_, i) => i + 1);
-        answer = [key, ...temp];
-      }
-      length -= value;
-    }
+  const answer = [];
+  for (let i = 1; i <= N; i++) {
+    const failedPlayers = stages.filter((stage) => stage === i).length;
+    const totalPlayers = stages.filter((stage) => stage >= i).length;
+    const failureRate = failedPlayers / totalPlayers;
+    answer.push([i, failureRate]);
   }
-  return answer;
+  answer.sort((a, b) => b[1] - a[1]);
+  return answer.map((x) => x[0]);
 }
