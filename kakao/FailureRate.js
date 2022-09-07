@@ -11,9 +11,8 @@ function solution(N, stages) {
   for (let [key, value] of countMap.entries()) {
     if (key <= N) {
       if (value === length) {
-        answer.push(key);
         const temp = Array.from({ length: key - 1 }, (_, i) => i + 1);
-        answer = [...answer, ...temp];
+        answer = [key, ...temp];
       }
       length -= value;
     }
